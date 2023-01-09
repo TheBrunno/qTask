@@ -1,0 +1,14 @@
+<%- include('includes/head') %>
+
+<div class="signin">
+  <h1>Entre</h1>
+  <form action="/signin/entry" method="post">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <input type="text" name="email" placeholder="E-mail">
+    <input type="password" name="password" placeholder="Senha">
+    <button>Criar conta no qTask</button>
+
+  </form>
+</div>
+
+<%- include('includes/footer') %> 

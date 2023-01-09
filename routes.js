@@ -10,4 +10,7 @@ route.get('/', homeController.index);
 route.get('/signup', registerController.index);
 route.post('/signup/entry', registerController.register);
 
+route.get('/signin', loginController.index);
+route.post('/signin/entry', loginController.login);
+
 module.exports = route;

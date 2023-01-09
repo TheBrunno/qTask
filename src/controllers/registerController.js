@@ -7,7 +7,7 @@ exports.index = (req, res) => {
 exports.register = async (req, res) => {
   try{
     const login = new Login(req.body);
-    login.register();
+    await login.register();
     console.log(login.errors);
     if(login.errors.length > 0){
       req.flash('errors', login.errors);

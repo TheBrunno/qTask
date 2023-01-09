@@ -20,7 +20,7 @@ class Login{
   }
 
   async register(){
-    this.check();
+    this.check('signup');
     if(this.errors.length > 0) return;
 
     if(await this.userAlreadyRegistered(this.body)){
@@ -34,14 +34,16 @@ class Login{
     this.user = LoginModel.create(this.body);
   }
 
-  check(){
+  check(type){
     this.cleanUp();
 
-    if(!this.body.firstname) this.errors.push('Insira um nome valido.');
-    if(!this.body.lastname) this.errors.push('Insira um sobrenome valido.');
-    if(isNaN(this.body.age)) this.errors.push('Insira uma idade valida.');
+    if(type === 'signup'){
+      if(!this.body.firstname) this.errors.push('Insira um nome valido.');
+      if(!this.body.lastname) this.errors.push('Insira um sobrenome valido.');
+      if(isNaN(this.body.age)) this.errors.push('Insira uma idade valida.');
+    }
     if(!validator.isEmail(this.body.email)) this.errors.push('Insira um e-mail valido.');
-    if(this.body.password <= 5 && this.body.password > 100) this.errors.push('Insira uma senha entre 6 e 100 caracteres.');
+    if(this.body.password <= 5 || this.body.password > 100) this.errors.push('Insira uma senha entre 6 e 100 caracteres.');
   }
   
   cleanUp(){
@@ -50,17 +52,30 @@ class Login{
         this.body[key] = '';
       }
     }
-    this.body = {
-      firstname: this.body.firstname,
-      lastname: this.body.lastname,
-      age: this.body.age,
-      email: this.body.email,
-      password: this.body.password
-    }
   }
   
   async userAlreadyRegistered(){
     return await LoginModel.findOne({ email: this.body.email });
+  }
+
+  async login(){
+    this.check();
+    if(this.errors.length > 0) return;
+
+    this.user = await LoginModel.findOne({ email: this.body.email });
+
+    if(!this.user){
+      this.errors.push('O e-mail ou a senha está incorreto.');
+      return;
+    }
+
+    if(!bcrypt.compareSync(this.body.password, this.user.password)){
+      this.errors.push('O e-mail ou a senha está incorreto.');
+      this.user = null;
+      return;
+    }
+
+    return this.user;
   }
 }
 

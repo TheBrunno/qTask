@@ -1,0 +1,46 @@
+.signup, .signin{
+  background-color: #fff;
+  border-radius: 100px;
+}
+.signup input, .signin input{
+  display: block;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  font-size: 20px;
+  border: 1px var(--third-color) solid;
+  padding: 20px 30px 20px 30px;
+  color: #fff;
+  border-radius: 50px;
+  transition: .25s;
+}
+.signup input::placeholder, .signin input::placeholder{
+  color: #ffffffc7;
+}
+.signup input:focus, .signin input:focus{
+  box-shadow: 0 0 7px 3px var(--shadow-third-color);
+}
+.signup form, .signin form{
+  gap: 40px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  background-color: var(--second-color);
+  padding: 100px;
+}
+button{
+  background-color: var(--third-color);
+  border: 1px solid var(--second-color);
+  font-size: 20px;
+  padding: 20px 30px 20px 30px;
+  border-radius: 50px;
+  font-weight: 700;
+  color: var(--second-color);
+  transition: .25s;
+  cursor: pointer;
+}
+button:hover{
+  box-shadow: 0 0 5px 1px var(--shadow-third-color);
+}
