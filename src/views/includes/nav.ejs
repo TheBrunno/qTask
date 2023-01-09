@@ -10,8 +10,34 @@
         menu
       </span>
       <ul>
-        <li><a href="signin">Entrar</a></li>
-        <li><a href="signup" class="try-free">Experimente</a></li>
+        <% if(!user){ %> 
+          <li>
+            <a href="signin">
+              Entrar
+            </a>
+          </li>
+          <li>
+            <a href="signup" class="try-free">
+              Experimente
+            </a>
+          </li>
+        <% }else{ %> 
+          <li>
+            <a href="/myaccount">
+              Minhas tarefas
+            </a>
+          </li>
+          <li>
+            <a href="/myaccount">
+              Minha conta
+            </a>
+          </li>
+          <li>
+            <a href="/logout">
+              Sair
+            </a>
+          </li>
+        <% } %> 
       </ul>
     </div>
   </div>

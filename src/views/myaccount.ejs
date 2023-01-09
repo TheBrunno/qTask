@@ -1,0 +1,31 @@
+<%- include('includes/head') %>
+<%- include('includes/nav') %>
+<link rel="stylesheet" href="css/myaccount.css">
+
+<div class="myaccount">
+  <div class="profile">
+    <div class="photo">
+      <img src="img/default_user.png">
+    </div>
+    <div class="personalInformations">
+      <h1><%- user.firstname %> <%- user.lastname %> </h1>
+      <div class="info">
+        <h3>
+          E-mail: <span class="data"><%- user.email %></span>
+        </h3>
+        <% if(user.age){ %> 
+          <h3>
+            Idade: <span class="data"><%- user.age %></span>
+          </h3>
+        <% } %> 
+      </div>
+      <div class="btn">
+        <a class="edit" href="myaccount/edit">
+          <span class="material-symbols-outlined icon-non">edit</span>
+        </a>  
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('includes/footer') %> 

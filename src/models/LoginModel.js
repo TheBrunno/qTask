@@ -43,7 +43,7 @@ class Login{
       if(isNaN(this.body.age)) this.errors.push('Insira uma idade valida.');
     }
     if(!validator.isEmail(this.body.email)) this.errors.push('Insira um e-mail valido.');
-    if(this.body.password <= 5 || this.body.password > 100) this.errors.push('Insira uma senha entre 6 e 100 caracteres.');
+    if(this.body.password.length <= 5 || this.body.password.length > 100) this.errors.push('Insira uma senha entre 6 e 100 caracteres.');
   }
   
   cleanUp(){
