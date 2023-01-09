@@ -1,0 +1,13 @@
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+:root{
+  --primary-color: #00684A;
+  --second-color: #023430;
+  --third-color: #01EC64;
+  --shadow-third-color: #01ec635d;
+}
