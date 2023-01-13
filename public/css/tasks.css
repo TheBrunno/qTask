@@ -1,0 +1,48 @@
+.task{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+.taskCreator{
+  border: 1px solid black;
+  box-sizing: border-box;
+  width: 35vw;
+}
+label{
+  display: block;
+}
+.priority-container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 20px 0;
+}
+button{
+  display: block;
+  margin: 0 auto 20px auto;
+  margin-bottom: 20px;
+}
+.priorities{
+  background-color: var(--second-color);
+  color: #fff;
+  padding: 15px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  cursor: pointer;
+}
+.active-priority{
+  background-color: var(--third-color);
+  color: #000;
+  font-weight: 600;
+  box-shadow: 5px 5px 5px #00000027;
+}
+
+@media (max-width: 755px) {
+  .taskCreator{
+    width: 100vw;
+  }
+}

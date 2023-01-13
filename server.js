@@ -44,6 +44,7 @@ app.use(flash());
 
 app.set('views', path.resolve(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
+app.use(express.json());
 
 app.use(csrf());
 
@@ -51,7 +52,7 @@ app.use(checkCSURFerror);
 app.use(csurfMiddleware);
 app.use(routes);
 
-const port = 3333;
+const port = 3000;
 app.on('ready', () => app.listen(port, () => {
   console.log(`http://localhost:${port}`);
 }))

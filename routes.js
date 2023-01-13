@@ -5,6 +5,7 @@ const homeController = require('./src/controllers/homeController');
 const loginController = require('./src/controllers/loginController');
 const registerController = require('./src/controllers/registerController');
 const accountController = require('./src/controllers/accountController');
+const taskController = require('./src/controllers/taskController')
 
 const { loginRequired } = require('./src/middlewares/loginMiddlewares');
 
@@ -19,5 +20,9 @@ route.post('/signin/entry', loginController.login);
 
 route.get('/myaccount', loginRequired, accountController.index);
 route.get('/logout', loginRequired, accountController.logout);
+
+route.get('/mytasks', loginRequired, taskController.index);
+
+route.post('/mytasks/create', loginRequired, taskController.create);
 
 module.exports = route;

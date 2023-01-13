@@ -1,0 +1,33 @@
+<%- include('includes/head') %>
+<%- include('includes/nav') %>
+<link rel="stylesheet" href="css/tasks.css">
+
+<div class="task">
+  <div class="taskCreator">
+    <form action="mytasks/create" method="post">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      <label>Nome da tarefa:</label>
+      <input type="text" name="taskname" placeholder="Tarefa">
+      <label>Descrição (opcional):</label>
+      <textarea name="description" cols="30" rows="10"></textarea>
+      <label>Defina a prioridade:</label>
+      <div class="priority-container">
+        <div class="priorities active-priority">1<span class="material-symbols-outlined">flag</span></div>
+        <div class="priorities">2<span class="material-symbols-outlined">flag</span></div>
+        <div class="priorities">3<span class="material-symbols-outlined">flag</span></div>
+        <div class="priorities">4<span class="material-symbols-outlined">flag</span></div>
+        <div class="priorities">5<span class="material-symbols-outlined">flag</span></div>
+      </div>
+      <button>Criar tarefa</button>
+    </form>
+  </div>
+  
+  <div class="taskView">
+  
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+  <script src="js/priorityTask.js"></script>
+  <script src="js/task.js"></script>
+</div>
+
+<%- include('includes/footer') %> 
