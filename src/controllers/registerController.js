@@ -7,7 +7,7 @@ exports.index = (req, res) => {
 exports.register = async (req, res) => {
   try{
     const login = new Login(req.body);
-    await login.register();
+    const user = await login.register();
     console.log(login.errors);
     if(login.errors.length > 0){
       req.flash('errors', login.errors);
@@ -17,7 +17,8 @@ exports.register = async (req, res) => {
       });
       return;
     }
-  
+
+    req.session.user = user;
     req.session.save(() => {
       res.redirect('/myaccount');
       return;

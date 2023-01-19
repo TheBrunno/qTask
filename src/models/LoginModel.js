@@ -31,7 +31,9 @@ class Login{
     const salt = bcrypt.genSaltSync();
     this.body.password = bcrypt.hashSync(this.body.password, salt);
     
-    this.user = LoginModel.create(this.body);
+    this.user = await LoginModel.create(this.body);
+    await this.login('auto');
+    return this.user;
   }
 
   check(type){
@@ -58,8 +60,9 @@ class Login{
     return await LoginModel.findOne({ email: this.body.email });
   }
 
-  async login(){
-    this.check();
+  async login(type){
+    if(type !== 'auto') this.check();
+    
     if(this.errors.length > 0) return;
 
     this.user = await LoginModel.findOne({ email: this.body.email });
@@ -69,7 +72,7 @@ class Login{
       return;
     }
 
-    if(!bcrypt.compareSync(this.body.password, this.user.password)){
+    if(!bcrypt.compareSync(this.body.password, this.user.password) && this.body.password !== this.user.password){
       this.errors.push('O e-mail ou a senha está incorreto.');
       this.user = null;
       return;
