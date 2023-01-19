@@ -3,12 +3,14 @@
 <link rel="stylesheet" href="css/tasks.css">
 
 <div class="task">
+  <div class="taskCreatorflow"></div>
   <div class="taskCreator">
+    <h2>Crie suas tarefas.</h2>
     <form action="mytasks/create" method="post">
       <input type="hidden" name="_csrf" value="<%= csrfToken %>">
       <label>Nome da tarefa:</label>
       <input type="text" name="taskname" placeholder="Tarefa">
-      <label>Descrição (opcional):</label>
+      <label>Descrição: <span class="instructions">(opcional)</span></label>
       <textarea name="description" cols="30" rows="10"></textarea>
       <label>Defina a prioridade:</label>
       <div class="priority-container">
@@ -18,12 +20,26 @@
         <div class="priorities">4<span class="material-symbols-outlined">flag</span></div>
         <div class="priorities">5<span class="material-symbols-outlined">flag</span></div>
       </div>
-      <button>Criar tarefa</button>
+      <button onclick="location.reload();">Criar tarefa</button>
     </form>
   </div>
   
   <div class="taskView">
-  
+    <p class="instructions">Para marcar uma tarefa como concluída, clique na mesma.</p>
+    <% tasks.forEach(task => { %>
+      <div class="taskBox">
+        <div class="taskname-view">
+          <h3><%= task.taskname %></h3>
+        </div>
+        <div class="description-view">
+          <p>
+            <%= task.description %>
+          </p> 
+        </div>
+        <div class="priority-view"><%= task.priority %><span class="material-symbols-outlined">flag</span></div>
+      </div>
+     <% }) %>
+    
   </div>
   <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
   <script src="js/priorityTask.js"></script>
