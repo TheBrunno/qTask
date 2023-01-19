@@ -1,16 +1,49 @@
 <%- include('includes/head') %>
 
-<div class="signup">
-  <form action="/signup/entry" method="post">
-    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-    <input type="text" name="firstname" placeholder="Nome*">
-    <input type="text" name="lastname" placeholder="Sobrenome*">
-    <input type="text" name="age" placeholder="Idade">
-    <input type="text" name="email" placeholder="E-mail*">
-    <input type="password" name="password" placeholder="Senha*">
-    <button>Criar conta no qTask</button>
+<link rel="stylesheet" href="css/signup.css">
 
-  </form>
+<div class="signup">
+  <div class="signup-informations">
+    <h1>
+      qTask
+    </h1>
+  </div>
+  <div class="signup-container">
+    <form action="/signup/entry" method="post">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      <div class="group">
+        <input required="" type="text" class="input" name="firstname">
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label>Nome</label>
+      </div>
+      <div class="group">
+        <input required="" type="text" class="input" name="lastname">
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label>Sobrenome</label>
+      </div>
+      <div class="group">
+        <input required="" type="text" class="input" name="age">
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label>Idade</label>
+      </div>
+      <div class="group">
+        <input required="" type="text" class="input" name="email">
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label>E-mail</label>
+      </div>
+      <div class="group">
+        <input required="" type="password" class="input" name="password">
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label>Senha</label>
+      </div>
+      <button>Criar conta no qTask</button>
+    </form>
+  </div>
 </div>
 
 <%- include('includes/footer') %> 
