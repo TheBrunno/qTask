@@ -1,8 +1,6 @@
 .profile{
   max-width: 1300px;
   margin: 0 auto;
-}
-.profile{
   margin-top: 50px;
   display: flex;
   justify-content: space-between;
@@ -64,4 +62,7 @@
 }
 .icon-non{
   font-size: 30px;
+}
+.myaccount{
+  padding-block-start: 90px;
 }

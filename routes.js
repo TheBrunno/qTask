@@ -7,13 +7,13 @@ const registerController = require('./src/controllers/registerController');
 const accountController = require('./src/controllers/accountController');
 const taskController = require('./src/controllers/taskController')
 
-const { loginRequired } = require('./src/middlewares/loginMiddlewares');
+const { loginRequired, unLoginRequired } = require('./src/middlewares/loginMiddlewares');
 
 
 route.get('/', homeController.index);
 
-route.get('/signup', registerController.index);
-route.post('/signup/entry', registerController.register);
+route.get('/signup', unLoginRequired, registerController.index);
+route.post('/signup/entry', unLoginRequired, registerController.register);
 
 route.get('/signin', loginController.index);
 route.post('/signin/entry', loginController.login);

@@ -12,3 +12,8 @@ exports.loginRequired = (req, res, next) => {
   if(!req.session.user) return res.redirect('/');
   next();
 }
+
+exports.unLoginRequired = (req, res, next) => {
+  if(req.session.user) return res.redirect('/myaccount');
+  next();
+}
