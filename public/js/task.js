@@ -11,11 +11,12 @@ class TaskValidator{
       _csrf: this._csrf,
       taskname: this.name,
       description: this.description,
+      state: 'pending',
       priority: this.priority
     }
     const url = '/mytasks/create';
 
-    axios.post(url, data)
+    await axios.post(url, data)
     .then(async res => {
       console.log(res.data);
     })

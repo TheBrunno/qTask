@@ -6,6 +6,7 @@ const TaskSchema = new mongoose.Schema({
   taskname: { type: String, required: true },
   description: { type: String, required: false },
   priority: { type: String, required: true },
+  state: { type: String, required: true },
   userId: { type: String, required: true }
 });
 
@@ -22,7 +23,14 @@ class Task{
 
     if(this.errors.length > 0) return;
 
-    TaskModel.create(this.body);
+    await TaskModel.create(this.body);
+  }
+
+  static async edit(id){
+    await TaskModel.findByIdAndUpdate(id, { state: 'done' });
+  }
+  static async remove(id){
+    await TaskModel.findByIdAndUpdate(id, { state: 'pending' });
   }
 
   static async get(userID){
@@ -36,6 +44,7 @@ class Task{
     if(this.body.taskname.length > 200) this.errors.push('Quantidade de caracteres excedida.');
     if(this.body.description.length > 500) this.errors.push('Quantidade de caracteres excedida.');
     if(!this.body.priority) this.body.priority = '5';
+    if(!this.body.state) this.state = 'pending';
   }
 
   cleanUp(){

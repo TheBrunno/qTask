@@ -5,7 +5,7 @@ exports.index = async (req, res) => {
   res.render('task', { user: req.session.user, tasks });
 }
 
-exports.create = async (req, res) => {
+exports.create = async (req, res, next) => {
   try{
     const task = new Task(req.body, req.session.user._id);
     await task.create();
@@ -15,9 +15,19 @@ exports.create = async (req, res) => {
         res.redirect('/');
         return;
       })
-      return;
     }
+    next();
   }catch(e){
     console.log(e);
   }
+}
+
+exports.edit = async (req, res, next) => {
+  await Task.edit(req.body._id);
+  next();
+}
+
+exports.remove = async (req, res, next) => {
+  await Task.remove(req.body._id);
+  next();
 }

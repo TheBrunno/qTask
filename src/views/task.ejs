@@ -20,30 +20,39 @@
         <div class="priorities">4<span class="material-symbols-outlined">flag</span></div>
         <div class="priorities">5<span class="material-symbols-outlined">flag</span></div>
       </div>
-      <button onclick="location.reload();">Criar tarefa</button>
+      <button>Criar tarefa</button>
     </form>
   </div>
-  
   <div class="taskView">
-    <p class="instructions">Para marcar uma tarefa como concluída, clique na mesma.</p>
-    <% tasks.forEach(task => { %>
-      <div class="taskBox">
-        <div class="taskname-view">
-          <h3><%= task.taskname %></h3>
+    <% if(tasks[0]){ %> 
+      <p class="instructions">Para marcar uma tarefa como <span class="done-word">concluída</span>, clique na mesma <span class="enf">uma vez</span>.</p>
+      <p class="instructions">Para <span class="remove-word">excluir</span> uma tarefa, dê um <span class="enf">clique duplo</span> na mesma.</p>
+      <% tasks.forEach(task => { %>
+        <div class="taskBox <% if(task.state === 'done'){ %><%= 'done' %><% } %>" onclick="Mark.done(this)" data-taskid="<%= task._id %>" data-csrf="<%= csrfToken %>">
+          <div class="done-flag"><span class="material-symbols-outlined">done</span></div>
+          <div class="taskname-view">
+            <h3><%= task.taskname %></h3>
+          </div>
+          <div class="description-view">
+            <p>
+              <%= task.description %>
+            </p>
+            <p>
+              <%= task._id %>
+            </p> 
+          </div>
+          <div class="priority-view"><%= task.priority %><span class="material-symbols-outlined">flag</span></div>
         </div>
-        <div class="description-view">
-          <p>
-            <%= task.description %>
-          </p> 
-        </div>
-        <div class="priority-view"><%= task.priority %><span class="material-symbols-outlined">flag</span></div>
-      </div>
-     <% }) %>
+      <% }) %>
+    <% } else { %>
+      <p class="instructions">Quando você criar tarefas elas aparecerão aqui.</p> 
+    <% } %> 
     
   </div>
   <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
   <script src="js/priorityTask.js"></script>
   <script src="js/task.js"></script>
+  <script src="js/markTask.js"></script>
 </div>
 
 <%- include('includes/footer') %> 

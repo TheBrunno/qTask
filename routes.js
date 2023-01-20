@@ -8,7 +8,7 @@ const accountController = require('./src/controllers/accountController');
 const taskController = require('./src/controllers/taskController')
 
 const { loginRequired, unLoginRequired } = require('./src/middlewares/loginMiddlewares');
-
+const { refresh } = require('./src/middlewares/taskMiddlewares');
 
 route.get('/', homeController.index);
 
@@ -23,6 +23,8 @@ route.get('/logout', loginRequired, accountController.logout);
 
 route.get('/mytasks', loginRequired, taskController.index);
 
-route.post('/mytasks/create', loginRequired, taskController.create);
+route.post('/mytasks/create', loginRequired, taskController.create, refresh);
+route.post('/mytasks/done', loginRequired, taskController.edit, refresh);
+route.post('/mytasks/remove', loginRequired, taskController.remove, refresh);
 
 module.exports = route;
