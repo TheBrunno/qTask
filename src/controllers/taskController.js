@@ -32,12 +32,12 @@ exports.create = async (req, res, next) => {
 }
 
 exports.edit = async (req, res, next) => {
-  await Task.edit(req.body.taskname);
+  await Task.edit(req.body.taskname, req.body.description);
   next();
 }
 
 exports.remove = async (req, res, next) => {
-  await Task.remove(req.body.taskname);
+  await Task.remove(req.body.taskname, req.body.description);
   next();
 }
 

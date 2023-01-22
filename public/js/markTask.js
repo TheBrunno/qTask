@@ -1,10 +1,12 @@
 class Mark{
   static async done(local){
-    const taskname = local.querySelector('.taskname').innerText;
+    const taskname = local.querySelector('.taskname').innerText.trim();
+    const description = local.querySelector('.description-view p').innerText.trim();
     const csrfToken = local.getAttribute('data-csrf');
+    console.log(taskname, description);
     let mode = local.classList.contains('done') ? 'remove' : 'done';
 
-    await axios.post(`/mytasks/${mode}`, { taskname, _csrf: csrfToken })
+    await axios.post(`/mytasks/${mode}`, { taskname, description, _csrf: csrfToken })
     .then()
     .catch(err => console.log(err));
 
@@ -12,8 +14,8 @@ class Mark{
   }
 
   static async delete(local){
-    const taskname = local.querySelector('.taskname').innerText;
-    const description = local.querySelector('.description-view p').innerText;
+    const taskname = local.querySelector('.taskname').innerText.trim();
+    const description = local.querySelector('.description-view p').innerText.trim();
     const csrfToken = local.getAttribute('data-csrf');
 
     await axios.post(`/mytasks/delete`, { taskname, description, _csrf: csrfToken })

@@ -1,8 +1,8 @@
 class TaskValidator{
   async getAllValues(){
-    this.name = document.querySelector('input[name="taskname"]').value;
+    this.name = document.querySelector('input[name="taskname"]').value.trim();
     this._csrf = document.querySelector('input[name="_csrf"').value;
-    this.description = document.querySelector('textarea[name="description"]').value;
+    this.description = document.querySelector('textarea[name="description"]').value.trim();
     this.clearFields();
     this.getPriority();
     await this.send();

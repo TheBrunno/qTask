@@ -26,11 +26,11 @@ class Task{
     await TaskModel.create(this.body);
   }
 
-  static async edit(taskname){
-    await TaskModel.findOneAndUpdate({ taskname }, { state: 'done' });
+  static async edit(taskname, description){
+    await TaskModel.findOneAndUpdate({ taskname, description }, { state: 'done' });
   }
-  static async remove(taskname){
-    await TaskModel.findOneAndUpdate({ taskname }, { state: 'pending' });
+  static async remove(taskname, description){
+    await TaskModel.findOneAndUpdate({ taskname, description }, { state: 'pending' });
   }
   static async delete(taskname, description){
     await TaskModel.findOneAndDelete({ taskname, description });
