@@ -19,32 +19,37 @@ class Task{
   }
 
   async create(){
-    this.check();
+    await this.check();
 
     if(this.errors.length > 0) return;
 
     await TaskModel.create(this.body);
   }
 
-  static async edit(id){
-    await TaskModel.findByIdAndUpdate(id, { state: 'done' });
+  static async edit(taskname){
+    await TaskModel.findOneAndUpdate({ taskname }, { state: 'done' });
   }
-  static async remove(id){
-    await TaskModel.findByIdAndUpdate(id, { state: 'pending' });
+  static async remove(taskname){
+    await TaskModel.findOneAndUpdate({ taskname }, { state: 'pending' });
   }
 
   static async get(userID){
     return await TaskModel.find({ userId: userID });
   }
 
-  check(){
+  async check(){
     this.cleanUp();
 
     if(!this.body.taskname) this.errors.push('Insira uma tarefa valida.');
+    if(await this.ifTasknameAlreadyExists()) this.errors.push('Essa tarefa já existe, escolha outro nome.');
     if(this.body.taskname.length > 200) this.errors.push('Quantidade de caracteres excedida.');
     if(this.body.description.length > 500) this.errors.push('Quantidade de caracteres excedida.');
     if(!this.body.priority) this.body.priority = '5';
     if(!this.body.state) this.state = 'pending';
+  }
+
+  async ifTasknameAlreadyExists(){
+    return await TaskModel.findOne({ taskname: this.body.taskname });
   }
 
   cleanUp(){

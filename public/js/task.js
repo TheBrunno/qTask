@@ -5,9 +5,10 @@ class TaskValidator{
     this.description = document.querySelector('textarea[name="description"]').value;
     this.getPriority();
     await this.send();
+    return this.data;
   }
   async send(){
-    const data = {
+    this.data = {
       _csrf: this._csrf,
       taskname: this.name,
       description: this.description,
@@ -16,7 +17,7 @@ class TaskValidator{
     }
     const url = '/mytasks/create';
 
-    await axios.post(url, data)
+    await axios.post(url, this.data)
     .then(async res => {
       console.log(res.data);
     })
@@ -37,7 +38,33 @@ class TaskValidator{
 
 const validator = new TaskValidator();
 
-document.addEventListener('submit', e => {
+document.addEventListener('submit', async e => {
   e.preventDefault();
-  const body = validator.getAllValues();
+  const taskViewLocal = document.querySelector('.taskView');
+  const body = await validator.getAllValues();
+  const tasknames = document.querySelectorAll('.taskname');
+  let tasknameExists = false;
+  
+  tasknames.forEach(taskname => {
+    if(body.taskname === taskname.innerText){
+      console.log('Essa tarefa já existe, escolha outro nome.');
+      tasknameExists = true;
+    };
+  });
+
+  if(!tasknameExists){
+    taskViewLocal.innerHTML += `
+    <div class="taskBox" onclick="Mark.done(this)" data-csrf="${body._csrf}">
+      <div class="done-flag"><span class="material-symbols-outlined">done</span></div>
+      <div class="taskname-view">
+        <h3 class="taskname">${body.taskname}</h3>
+      </div>
+      <div class="description-view">
+        <p>
+          ${body.description}
+        </p>
+      </div>
+      <div class="priority-view">${body.priority}<span class="material-symbols-outlined">flag</span></div>
+    </div>`
+  };
 })

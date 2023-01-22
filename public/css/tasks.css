@@ -17,6 +17,7 @@
   width: 35vw;
 }
 .taskBox{
+  user-select: none;
   position: relative;
   margin: 20px 0;
   border: 2px solid var(--second-color);
@@ -100,11 +101,11 @@ button{
   'wght' 700,
   'GRAD' 0,
   'opsz' 48;
-  animation-name: taskPriority;
+  animation-name: fade-in;
   animation-duration: .35s;
 }
 
-@keyframes taskPriority {
+@keyframes fade-in {
   0%{
     opacity: 0;
   }

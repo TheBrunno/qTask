@@ -14,7 +14,8 @@ exports.create = async (req, res, next) => {
       req.session.save(() => {
         res.redirect('/');
         return;
-      })
+      });
+      return;
     }
     next();
   }catch(e){
@@ -23,11 +24,11 @@ exports.create = async (req, res, next) => {
 }
 
 exports.edit = async (req, res, next) => {
-  await Task.edit(req.body._id);
+  await Task.edit(req.body.taskname);
   next();
 }
 
 exports.remove = async (req, res, next) => {
-  await Task.remove(req.body._id);
+  await Task.remove(req.body.taskname);
   next();
 }
