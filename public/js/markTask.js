@@ -5,7 +5,7 @@ class Mark{
     let mode = local.classList.contains('done') ? 'remove' : 'done';
 
     await axios.post(`/mytasks/${mode}`, { taskname, _csrf: csrfToken })
-    .then(response => console.log(response))
+    .then()
     .catch(err => console.log(err));
 
     local.classList.toggle('done');
@@ -17,14 +17,18 @@ class Mark{
     const csrfToken = local.getAttribute('data-csrf');
 
     await axios.post(`/mytasks/delete`, { taskname, description, _csrf: csrfToken })
-    .then(response => console.log(response))
+    .then()
     .catch(err => console.log(err));
 
     local.remove();
 
-    console.log(document.querySelector('.taskView').childElementCount);
+    const oneLocal = document.querySelector('.taskView .onePriority').childElementCount;
+    const twoLocal = document.querySelector('.taskView .twoPriority').childElementCount;
+    const threeLocal = document.querySelector('.taskView .threePriority').childElementCount;
+    const fourLocal = document.querySelector('.taskView .fourPriority').childElementCount;
+    const fiveLocal = document.querySelector('.taskView .fivePriority').childElementCount;
 
-    if(document.querySelector('.taskView').childElementCount === 1){
+    if(!oneLocal && !twoLocal && !threeLocal && !fourLocal && !fiveLocal){
       document.querySelector('.second-instructions').remove();
 
       const instruction = document.createElement('p');

@@ -92,6 +92,7 @@ button{
   padding: 0;
 }
 .done > .delete-flag{
+  cursor: pointer;
   z-index: 1;
   top: 25%;
   right: -70px;

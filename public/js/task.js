@@ -20,9 +20,7 @@ class TaskValidator{
     const url = '/mytasks/create';
 
     await axios.post(url, this.data)
-    .then(async res => {
-      console.log(res.data);
-    })
+    .then()
     .catch(err => {
       console.log(err);
     })
@@ -35,7 +33,6 @@ class TaskValidator{
       return;
     }
     this.priority = local.textContent.replace('flag', '');
-    console.log(this.priority);
   }
     
   clearFields(){
@@ -52,7 +49,9 @@ document.addEventListener('submit', async e => {
   const body = await validator.getAllValues();
   const tasknames = document.querySelectorAll('.taskname');
   const descriptions = document.querySelectorAll('.description-view');
+  const order = ['one', 'two', 'three', 'four', 'five'];
   let tasknameExists = false;
+  let elementExist = false;
 
   for(let i=0; i<tasknames.length; i++){
     if(body.taskname === tasknames[i].innerText && body.description === descriptions[i].innerText){
@@ -62,8 +61,9 @@ document.addEventListener('submit', async e => {
   }
 
   if(!tasknameExists){
-    taskViewLocal.innerHTML += `
-    <div class="taskBox" onclick="Mark.done(this)" data-csrf="${body._csrf}">
+    const local = document.querySelector(`.${order[body.priority-1]}Priority`);
+    local.innerHTML += `
+    <div class="taskBox priority-${order[body.priority-1]}" onclick="Mark.done(this)" data-csrf="${body._csrf}">
       <div class="done-flag"><span class="material-symbols-outlined">done</span></div>
       <div class="taskname-view">
         <h3 class="taskname">${body.taskname}</h3>
@@ -75,15 +75,16 @@ document.addEventListener('submit', async e => {
       </div>
       <div class="priority-view">${body.priority}<span class="material-symbols-outlined">flag</span></div>
       <div class="delete-flag" onclick="Mark.delete(this.parentElement)"><span class="material-symbols-outlined">delete</span></div>
-      </div>`
-      const old = document.querySelector('.first-instructions');
-      const now = document.querySelector('.second-instructions');
-      if(old) old.remove();
-      if(!now){
-        const instruction = document.createElement('p');
-        instruction.classList.add('instructions', 'second-instructions');
-        instruction.innerHTML = 'Para marcar uma tarefa como <span class="done-word">concluída</span>, clique na mesma.';
-        document.querySelector('.taskView').insertAdjacentElement('afterbegin', instruction);
+    </div>`;
+
+    const old = document.querySelector('.first-instructions');
+    const now = document.querySelector('.second-instructions');
+    if(old) old.remove();
+    if(!now){
+      const instruction = document.createElement('p');
+      instruction.classList.add('instructions', 'second-instructions');
+      instruction.innerHTML = 'Para marcar uma tarefa como <span class="done-word">concluída</span>, clique na mesma.';
+      document.querySelector('.taskView').insertAdjacentElement('afterbegin', instruction);
     };
   };
 })

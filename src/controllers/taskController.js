@@ -2,7 +2,15 @@ const Task = require('../models/TaskModel');
 
 exports.index = async (req, res) => {
   const tasks = await Task.get(req.session.user._id);
-  res.render('task', { user: req.session.user, tasks });
+  
+  const _tasks = [];
+  for(let c=1; c<=5; c++){
+    for(let i in tasks){
+      if(tasks[i].priority == c) _tasks.push(tasks[i]);
+    }
+  }
+
+  res.render('task', { user: req.session.user, tasks:_tasks, order: ['one', 'two', 'three', 'four', 'five'] });
 }
 
 exports.create = async (req, res, next) => {
