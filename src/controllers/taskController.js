@@ -32,3 +32,8 @@ exports.remove = async (req, res, next) => {
   await Task.remove(req.body.taskname);
   next();
 }
+
+exports.delete = async (req, res, next) => {
+  await Task.delete(req.body.taskname);
+  next();
+} 

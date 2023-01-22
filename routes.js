@@ -26,5 +26,6 @@ route.get('/mytasks', loginRequired, taskController.index);
 route.post('/mytasks/create', loginRequired, taskController.create, refresh);
 route.post('/mytasks/done', loginRequired, taskController.edit, refresh);
 route.post('/mytasks/remove', loginRequired, taskController.remove, refresh);
+route.post('/mytasks/delete', loginRequired, taskController.delete, refresh);
 
 module.exports = route;

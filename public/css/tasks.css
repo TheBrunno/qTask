@@ -24,6 +24,7 @@
   border-radius: 70px;
   box-sizing: border-box;
   padding: 10px 50px;
+  background-color: #fff;
 }
 .taskname-view{
   text-align: center;
@@ -65,7 +66,7 @@ button{
   width: 0;
   height: 0;
 }
-.priorities, .priority-view, .done > .done-flag{
+.priorities, .priority-view, .done > .done-flag, .done > .delete-flag{
   background-color: var(--second-color);
   color: #fff;
   padding: 15px 12px;
@@ -81,7 +82,7 @@ button{
   'GRAD' 0,
   'opsz' 48
 }
-.priority-view, .done > .done-flag{
+.priority-view, .done > .done-flag, .done > .delete-flag{
   position: absolute;
   right: 0;
   top: -10px;
@@ -89,6 +90,24 @@ button{
   width: 55px;
   height: 55px;
   padding: 0;
+}
+.done > .delete-flag{
+  z-index: 1;
+  top: 25%;
+  right: -70px;
+  background-color: #FF463C;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 500,
+  'GRAD' 0,
+  'opsz' 48;
+  animation-name: fade-right;
+  animation-duration: .35s;
+}
+.delete-flag{
+  display: none;
+  width: 0;
+  height: 0;
 }
 .done > .done-flag{
   background-color: var(--third-color);
@@ -111,6 +130,16 @@ button{
   }
   100%{
     opacity: 1;
+  }
+}
+@keyframes fade-right {
+  0%{
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 

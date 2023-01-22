@@ -25,8 +25,7 @@
   </div>
   <div class="taskView">
     <% if(tasks[0]){ %> 
-      <p class="instructions">Para marcar uma tarefa como <span class="done-word">concluída</span>, clique na mesma <span class="enf">uma vez</span>.</p>
-      <p class="instructions">Para <span class="remove-word">excluir</span> uma tarefa, dê um <span class="enf">clique duplo</span> na mesma.</p>
+      <p class="instructions second-instructions">Para marcar uma tarefa como <span class="done-word">concluída</span>, clique na mesma.</p>
       <% tasks.forEach(task => { %>
         <div class="taskBox <% if(task.state === 'done'){ %><%= 'done' %><% } %>" onclick="Mark.done(this)" data-csrf="<%= csrfToken %>">
           <div class="done-flag"><span class="material-symbols-outlined">done</span></div>
@@ -39,10 +38,11 @@
             </p>
           </div>
           <div class="priority-view"><%= task.priority %><span class="material-symbols-outlined">flag</span></div>
+          <div class="delete-flag" onclick="Mark.delete(this.parentElement)"><span class="material-symbols-outlined">delete</span></div>
         </div>
       <% }) %>
     <% } else { %>
-      <p class="instructions">Quando você criar tarefas elas aparecerão aqui.</p> 
+      <p class="instructions first-instructions">Quando você criar tarefas elas aparecerão aqui.</p> 
     <% } %> 
     
   </div>

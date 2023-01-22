@@ -3,9 +3,14 @@ class TaskValidator{
     this.name = document.querySelector('input[name="taskname"]').value;
     this._csrf = document.querySelector('input[name="_csrf"').value;
     this.description = document.querySelector('textarea[name="description"]').value;
+    this.clearFields();
     this.getPriority();
     await this.send();
     return this.data;
+  }
+  clearFields(){
+    document.querySelector('textarea[name="description"]').value = '';
+    document.querySelector('input[name="taskname"]').value = '';
   }
   async send(){
     this.data = {
@@ -65,6 +70,16 @@ document.addEventListener('submit', async e => {
         </p>
       </div>
       <div class="priority-view">${body.priority}<span class="material-symbols-outlined">flag</span></div>
-    </div>`
+      <div class="delete-flag" onclick="Mark.delete(this.parentElement)"><span class="material-symbols-outlined">delete</span></div>
+      </div>`
+      const old = document.querySelector('.first-instructions');
+      const now = document.querySelector('.second-instructions');
+      if(old) old.remove();
+      if(!now){
+        const instruction = document.createElement('p');
+        instruction.classList.add('instructions', 'second-instructions');
+        instruction.innerHTML = 'Para marcar uma tarefa como <span class="done-word">concluída</span>, clique na mesma.';
+        document.querySelector('.taskView').insertAdjacentElement('afterbegin', instruction);
+    };
   };
 })
