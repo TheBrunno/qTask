@@ -13,20 +13,25 @@ class Mark{
 
   static async delete(local){
     const taskname = local.querySelector('.taskname').innerText;
+    const description = local.querySelector('.description-view p').innerText;
     const csrfToken = local.getAttribute('data-csrf');
 
-    await axios.post(`/mytasks/delete`, { taskname, _csrf: csrfToken })
+    await axios.post(`/mytasks/delete`, { taskname, description, _csrf: csrfToken })
     .then(response => console.log(response))
     .catch(err => console.log(err));
 
     local.remove();
 
     console.log(document.querySelector('.taskView').childElementCount);
+
     if(document.querySelector('.taskView').childElementCount === 1){
       document.querySelector('.second-instructions').remove();
+
       const instruction = document.createElement('p');
+
       instruction.classList.add('instructions', 'first-instructions');
       instruction.innerHTML = 'Quando você criar tarefas elas aparecerão aqui.';
+
       document.querySelector('.taskView').insertAdjacentElement('afterbegin', instruction);
     }
   }

@@ -32,8 +32,8 @@ class Task{
   static async remove(taskname){
     await TaskModel.findOneAndUpdate({ taskname }, { state: 'pending' });
   }
-  static async delete(taskname){
-    await TaskModel.findOneAndDelete({ taskname });
+  static async delete(taskname, description){
+    await TaskModel.findOneAndDelete({ taskname, description });
   }
 
   static async get(userID){
@@ -52,7 +52,7 @@ class Task{
   }
 
   async ifTasknameAlreadyExists(){
-    return await TaskModel.findOne({ taskname: this.body.taskname });
+    return await TaskModel.findOne({ taskname: this.body.taskname, description: this.body.description });
   }
 
   cleanUp(){

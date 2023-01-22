@@ -8,10 +8,7 @@ class TaskValidator{
     await this.send();
     return this.data;
   }
-  clearFields(){
-    document.querySelector('textarea[name="description"]').value = '';
-    document.querySelector('input[name="taskname"]').value = '';
-  }
+
   async send(){
     this.data = {
       _csrf: this._csrf,
@@ -30,6 +27,7 @@ class TaskValidator{
       console.log(err);
     })
   }
+
   getPriority(){
     const local = document.querySelector('.active-priority');
     if(!local){
@@ -38,6 +36,11 @@ class TaskValidator{
     }
     this.priority = local.textContent.replace('flag', '');
     console.log(this.priority);
+  }
+    
+  clearFields(){
+    document.querySelector('textarea[name="description"]').value = '';
+    document.querySelector('input[name="taskname"]').value = '';
   }
 }
 
@@ -48,14 +51,15 @@ document.addEventListener('submit', async e => {
   const taskViewLocal = document.querySelector('.taskView');
   const body = await validator.getAllValues();
   const tasknames = document.querySelectorAll('.taskname');
+  const descriptions = document.querySelectorAll('.description-view');
   let tasknameExists = false;
-  
-  tasknames.forEach(taskname => {
-    if(body.taskname === taskname.innerText){
+
+  for(let i=0; i<tasknames.length; i++){
+    if(body.taskname === tasknames[i].innerText && body.description === descriptions[i].innerText){
       console.log('Essa tarefa já existe, escolha outro nome.');
       tasknameExists = true;
     };
-  });
+  }
 
   if(!tasknameExists){
     taskViewLocal.innerHTML += `
