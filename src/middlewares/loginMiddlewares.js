@@ -9,7 +9,7 @@ exports.checkCSURFerror = (err, req, res, next) => {
 }
 
 exports.loginRequired = (req, res, next) => {
-  if(!req.session.user) return res.redirect('/');
+  if(!req.session.user) return res.redirect('/signup');
   next();
 }
 
