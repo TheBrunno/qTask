@@ -222,11 +222,11 @@ button {
   .done>.delete-flag {
     right: 0;
     top: auto;
-    bottom: -10px;
+    bottom: -30px;
   }
 
   .taskBox {
-    margin: 40px 0;
+    margin: 50px 0;
   }
 }
 
