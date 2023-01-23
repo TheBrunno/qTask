@@ -6,14 +6,14 @@
   padding: 90px 80px 0 80px;
 }
 
-.qtask{
+.qtask {
   background: linear-gradient(91.57deg, var(--third-color) 5.02%, var(--primary-color) 40.25%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.tasktext{
+.tasktext {
   text-decoration: var(--primary-color) wavy underline;
   text-decoration-skip-ink: none;
 }
@@ -76,4 +76,22 @@ header p {
   box-shadow: var(--primary-color) 0px 0px 0px 0px;
   transform: translateY(10px);
   transition: 100ms;
+}
+
+@media (max-width: 755px) {
+  .landing-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 150px);
+    padding: 0 20px;
+  }
+
+  .image-ill {
+    display: none;
+  }
+
+  .anchor {
+    padding: 0 30px;
+  }
 }

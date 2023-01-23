@@ -1,15 +1,27 @@
 <nav>
   <div class="navigation">
     <div class="logo">
+      <a href="/"></a>
     </div>
     <div class="menu">
-      <span class="material-symbols-outlined icon">
-        person
-      </span>
-      <span class="material-symbols-outlined icon">
-        menu
-      </span>
-      <ul>
+      <% if(user){ %>
+        <a href="/mytasks">
+          <span class="material-symbols-outlined icon">
+            notes
+          </span>
+        </a>
+        <a href="/myaccount">
+          <span class="material-symbols-outlined icon">
+            person
+          </span>
+        </a>
+        <a href="/logout">
+          <span class="material-symbols-outlined icon">
+            logout
+          </span>
+        </a>
+      <% } %> 
+      <ul class="<% if(user) { %>removeable<% } %> ">
         <% if(!user){ %> 
           <li>
             <a href="signin">
@@ -22,17 +34,17 @@
             </a>
           </li>
         <% }else{ %> 
-          <li>
+          <li class="removeable">
             <a href="/mytasks">
               Minhas tarefas
             </a>
           </li>
-          <li>
+          <li class="removeable">
             <a href="/myaccount">
               Minha conta
             </a>
           </li>
-          <li>
+          <li class="removeable">
             <a href="/logout">
               Sair
             </a>

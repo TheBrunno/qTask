@@ -1,4 +1,4 @@
-nav{
+nav {
   height: 90px;
   width: 100%;
   box-shadow: 0 0 10px 2px #00000065;
@@ -8,35 +8,39 @@ nav{
   top: 0;
 }
 
-.logo{
+.logo a {
+  display: block;
   width: 50px;
   height: 50px;
   background-color: var(--primary-color);
 }
 
-.navigation, ul, .menu{
+.navigation,
+ul,
+.menu {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100%;
   padding: 0 17px 0 30px;
 }
-.navigation{
+
+.navigation {
   max-width: 1500px;
   margin: 0 auto;
 }
 
-.icon{
+.icon {
   display: none;
   width: 0;
   height: 0;
 }
 
-nav ul{
+nav ul {
   gap: 30px;
 }
 
-nav ul li a{
+nav ul li a {
   text-decoration: none;
   color: #000;
   display: block;
@@ -44,7 +48,7 @@ nav ul li a{
   height: 100%;
 }
 
-.try-free{
+.try-free {
   background-color: var(--third-color);
   border: #005a26 1px solid;
   font-weight: 600;
@@ -53,12 +57,12 @@ nav ul li a{
   transition: .25s;
 }
 
-.try-free:hover{
+.try-free:hover {
   border-radius: 50px;
 }
 
 @media (max-width: 755px) {
-  .icon{
+  .icon {
     font-size: 33px;
     margin-left: 20px;
     display: block;
@@ -66,9 +70,16 @@ nav ul li a{
     width: max-content;
     user-select: none;
   }
-  nav ul{
+
+  .removeable {
     display: none;
     width: 0;
     height: 0;
+  }
+
+  .menu a {
+    user-select: none;
+    text-decoration: none;
+    color: #000;
   }
 }

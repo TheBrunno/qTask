@@ -1,22 +1,27 @@
-.task{
+.task {
   padding-block-start: 90px;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   margin-top: 50px;
 }
-.taskCreator, .taskCreatorflow{
+
+.taskCreator,
+.taskCreatorflow {
   box-sizing: border-box;
   width: 35vw;
 }
-.taskCreator{
+
+.taskCreator {
   position: fixed;
   left: 10vw;
 }
-.taskView{
+
+.taskView {
   width: 35vw;
 }
-.taskBox{
+
+.taskBox {
   user-select: none;
   position: relative;
   margin: 20px 0;
@@ -26,17 +31,22 @@
   padding: 10px 50px;
   background-color: #fff;
 }
-.taskname-view{
+
+.taskname-view {
   text-align: center;
   margin: 10px 0;
 }
-.description-view{
+
+.description-view {
   margin: 15px 0;
 }
-label{
+
+label {
   display: block;
 }
-.taskCreator input, .taskCreator textarea{
+
+.taskCreator input,
+.taskCreator textarea {
   box-sizing: border-box;
   margin: 8px 0;
   width: 100%;
@@ -45,10 +55,12 @@ label{
   padding: 10px;
   resize: none;
 }
-.taskCreator h2{
+
+.taskCreator h2 {
   margin-bottom: 10px;
 }
-.priority-container{
+
+.priority-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -56,17 +68,23 @@ label{
   width: 100%;
   margin: 20px 0;
 }
-button{
+
+button {
   display: block;
   margin: 0 auto 20px auto;
   margin-bottom: 20px;
 }
-.done-flag{
+
+.done-flag {
   display: none;
   width: 0;
   height: 0;
 }
-.priorities, .priority-view, .done > .done-flag, .done > .delete-flag{
+
+.priorities,
+.priority-view,
+.done>.done-flag,
+.done>.delete-flag {
   background-color: var(--second-color);
   color: #fff;
   padding: 15px 12px;
@@ -77,12 +95,15 @@ button{
   cursor: pointer;
   user-select: none;
   font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 48
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
 }
-.priority-view, .done > .done-flag, .done > .delete-flag{
+
+.priority-view,
+.done>.done-flag,
+.done>.delete-flag {
   position: absolute;
   right: 0;
   top: -10px;
@@ -91,72 +112,80 @@ button{
   height: 55px;
   padding: 0;
 }
-.done > .delete-flag{
+
+.done>.delete-flag {
   cursor: pointer;
   z-index: 1;
   top: 25%;
   right: -70px;
   background-color: #FF463C;
   font-variation-settings:
-  'FILL' 0,
-  'wght' 500,
-  'GRAD' 0,
-  'opsz' 48;
+    'FILL' 0,
+    'wght' 500,
+    'GRAD' 0,
+    'opsz' 48;
   animation-name: fade-right;
   animation-duration: .35s;
 }
-.delete-flag{
+
+.delete-flag {
   display: none;
   width: 0;
   height: 0;
 }
-.done > .done-flag{
+
+.done>.done-flag {
   background-color: var(--third-color);
   color: #000;
   font-weight: 900;
   left: -20px;
   top: 10px;
   font-variation-settings:
-  'FILL' 0,
-  'wght' 700,
-  'GRAD' 0,
-  'opsz' 48;
+    'FILL' 0,
+    'wght' 700,
+    'GRAD' 0,
+    'opsz' 48;
   animation-name: fade-in;
   animation-duration: .35s;
 }
 
 @keyframes fade-in {
-  0%{
+  0% {
     opacity: 0;
   }
-  100%{
+
+  100% {
     opacity: 1;
   }
 }
+
 @keyframes fade-right {
-  0%{
+  0% {
     opacity: 0;
     transform: translateX(-20px);
   }
-  100%{
+
+  100% {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
-.active-priority{
+.active-priority {
   background-color: var(--third-color);
   color: #000;
   font-weight: 600;
   box-shadow: 5px 5px 5px #00000027;
 }
-.instructions{
+
+.instructions {
   text-align: center;
   margin-bottom: 40px;
   color: rgb(56, 56, 56);
   font-size: .9rem;
 }
-.task-button{
+
+.task-button {
   cursor: pointer;
   border: 1px solid var(--second-color);
   background-color: var(--third-color);
@@ -165,37 +194,52 @@ button{
   font-weight: 500;
   transition: .25s;
 }
-.task-button:hover{
+
+.task-button:hover {
   border-radius: 50px;
   box-shadow: 5px 5px 5px #00000027;
 }
 
 @media (max-width: 755px) {
-  .task{
+  .task {
     justify-content: center;
     align-items: center;
   }
-  .taskCreator, .taskView{
+
+  .taskCreator,
+  .taskView {
     width: 85vw;
   }
-  .taskCreatorflow{
+
+  .taskCreatorflow {
     width: 0;
   }
-  .taskCreator{
+
+  .taskCreator {
     position: static;
   }
+
+  .done>.delete-flag {
+    right: 0;
+    top: auto;
+    bottom: -10px;
+  }
+
+  .taskBox {
+    margin: 40px 0;
+  }
 }
-.done-word{
+
+.done-word {
   color: #4da000;
   font-weight: 600;
 }
-.remove-word{
+
+.remove-word {
   color: #e00000;
   font-weight: 600;
 }
-.enf{
-  text-decoration: underline;
-}
-.done{
 
+.enf {
+  text-decoration: underline;
 }

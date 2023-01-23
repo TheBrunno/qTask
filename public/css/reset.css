@@ -1,11 +1,11 @@
-*{
+* {
   margin: 0;
   padding: 0;
   list-style: none;
   font-family: 'Poppins', sans-serif;
 }
 
-:root{
+:root {
   --primary-color: #00684A;
   --second-color: #023430;
   --third-color: #01EC64;
