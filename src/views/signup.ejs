@@ -3,25 +3,22 @@
 <link rel="stylesheet" href="css/signup.css">
 
 <div class="signup">
-  <div class="signup-informations">
-    <h1>
-      qTask
-    </h1>
-  </div>
+  <%- include('includes/advices') %> 
   <div class="signup-container">
     <form action="/signup/entry" method="post">
+      <h3>Entre com suas informações nos campos abaixo:</h3>
       <input type="hidden" name="_csrf" value="<%= csrfToken %>">
       <div class="group">
         <input required="" type="text" class="input" name="firstname">
         <span class="highlight"></span>
         <span class="bar"></span>
-        <label>Nome</label>
+        <label>Nome*</label>
       </div>
       <div class="group">
         <input required="" type="text" class="input" name="lastname">
         <span class="highlight"></span>
         <span class="bar"></span>
-        <label>Sobrenome</label>
+        <label>Sobrenome*</label>
       </div>
       <div class="group">
         <input required="" type="text" class="input" name="age">
@@ -33,15 +30,15 @@
         <input required="" type="text" class="input" name="email">
         <span class="highlight"></span>
         <span class="bar"></span>
-        <label>E-mail</label>
+        <label>E-mail*</label>
       </div>
       <div class="group">
         <input required="" type="password" class="input" name="password">
         <span class="highlight"></span>
         <span class="bar"></span>
-        <label>Senha</label>
+        <label>Senha*</label>
       </div>
-      <button>Criar conta no qTask</button>
+      <button class="signup-button">Criar conta no qTask</button>
     </form>
   </div>
 </div>

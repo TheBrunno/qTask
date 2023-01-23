@@ -156,6 +156,19 @@ button{
   color: rgb(56, 56, 56);
   font-size: .9rem;
 }
+.task-button{
+  cursor: pointer;
+  border: 1px solid var(--second-color);
+  background-color: var(--third-color);
+  padding: 15px 20px;
+  font-size: 1em;
+  font-weight: 500;
+  transition: .25s;
+}
+.task-button:hover{
+  border-radius: 50px;
+  box-shadow: 5px 5px 5px #00000027;
+}
 
 @media (max-width: 755px) {
   .task{

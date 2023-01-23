@@ -1,23 +1,23 @@
 .group {
   position: relative;
-  margin: 30px 0;
- }
- 
- .input {
+  margin: 20px auto;
+}
+
+.input {
   font-size: 16px;
   padding: 10px 10px 10px 5px;
   display: block;
-  width: 200px;
+  width: 350px;
   border: none;
   border-bottom: 1px solid #515151;
   background: transparent;
- }
- 
- .input:focus {
+}
+
+.input:focus {
   outline: none;
- }
- 
- label {
+}
+
+label {
   color: #999;
   font-size: 18px;
   font-weight: normal;
@@ -28,21 +28,23 @@
   transition: 0.2s ease all;
   -moz-transition: 0.2s ease all;
   -webkit-transition: 0.2s ease all;
- }
- 
- .input:focus ~ label, .input:valid ~ label {
+}
+
+.input:focus~label,
+.input:valid~label {
   top: -20px;
   font-size: 14px;
   color: var(--second-color);
- }
- 
- .bar {
+}
+
+.bar {
   position: relative;
   display: block;
-  width: 200px;
- }
- 
- .bar:before, .bar:after {
+  width: 365px;
+}
+
+.bar:before,
+.bar:after {
   content: '';
   height: 2px;
   width: 0;
@@ -52,21 +54,22 @@
   transition: 0.2s ease all;
   -moz-transition: 0.2s ease all;
   -webkit-transition: 0.2s ease all;
- }
- 
- .bar:before {
+}
+
+.bar:before {
   left: 50%;
- }
- 
- .bar:after {
+}
+
+.bar:after {
   right: 50%;
- }
- 
- .input:focus ~ .bar:before, .input:focus ~ .bar:after {
+}
+
+.input:focus~.bar:before,
+.input:focus~.bar:after {
   width: 50%;
- }
- 
- .highlight {
+}
+
+.highlight {
   position: absolute;
   height: 60%;
   width: 100px;
@@ -74,34 +77,170 @@
   left: 0;
   pointer-events: none;
   opacity: 0.5;
- }
- 
- .input:focus ~ .highlight {
-  animation: inputHighlighter 0.3s ease;
- }
- 
- @keyframes inputHighlighter {
-  from {
-   background: var(--second-color);
-  }
- 
-  to {
-   width: 0;
-   background: transparent;
-  }
- }
+}
 
-.signup{
+.input:focus~.highlight {
+  animation: inputHighlighter 0.3s ease;
+}
+
+@keyframes inputHighlighter {
+  from {
+    background: var(--second-color);
+  }
+
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+
+.signup, .signin {
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  width: 100vw;
+  max-width: 1500px;
+  margin: 0 auto;
 }
-.signup div{
+
+.signup > div, .signin > div {
   width: 35vw;
 }
-.signup-informations{
+
+.signup-informations {
+  border-radius: 50px;
+  height: 800px;
+  background-image: linear-gradient(to top, var(--second-color), var(--primary-color));
+  color: #fff;
+  box-sizing: border-box;
+  padding: 30px 20px;
+  max-width: 500px;
+  position: relative;
+}
+
+.background-signup{
+  position: absolute;
+  z-index: -1;
+  background-color: var(--primary-color);
+}
+.one{
+  width: 100px !important;
+  height: 160px !important;
+  border-radius: 10px;
+  right: -50px;
+  top: -50px;
+  box-shadow: var(--primary-color) 0px 7px 15px 0px;
+}
+.two{
+  width: 50px !important;
+  height: 80px !important;
+  border-radius: 5px;
+  top: 50px;
+  right: -110px;
+  box-shadow: var(--primary-color) 0px 7px 15px 0px;
+}
+.three{
+  width: 100px !important;
+  height: 160px !important;
+  border-radius: 10px;
+  bottom: -50px;
+  left: -50px;
+  background-color: var(--second-color);
+  box-shadow: var(--second-color) 0px 7px 15px 0px;
+}
+.four{
+  width: 50px !important;
+  height: 80px !important;
+  border-radius: 5px;
+  bottom: 50px;
+  left: -110px;
+  background-color: var(--second-color);
+  box-shadow: var(--second-color) 0px 7px 15px 0px;
+}
+
+.advices{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.advices > p{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.advice-icon{
+  font-size: 50px;
+  margin: 0 12px 0 0;
+}
+
+.signup-informations h1, .signup-informations p{
+  text-align: center;
+}
+
+.signup-informations p{
+  margin-top: 20px;
+  letter-spacing: 1px;
+}
+
+p.advice-description{
+  color: #ffffff94;
+  width: 85%;
+  text-align: left;
+  margin: 0 0 0 55px;
+}
+
+.signup-button, .signin-button {
+  cursor: pointer;
+  padding: 17px 40px;
+  border-radius: 50px;
+  border: 0;
+  background-color: #fff;
+  box-shadow: #0000000d 0 0 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 15px;
+  transition: all .5s ease;
+
+}
+
+.signup-button:hover, .signin-button:hover {
+  letter-spacing: 3px;
   background-color: var(--primary-color);
   color: #fff;
+  box-shadow: var(--primary-color) 0px 7px 29px 0px;
 }
-.signup-informations h1{
+
+.signup-button:active, .signin-button:active {
+  letter-spacing: 3px;
+  background-color: var(--primary-color);
+  color: #fff;
+  box-shadow: var(--primary-color) 0px 0px 0px 0px;
+  transform: translateY(10px);
+  transition: 100ms;
+}
+
+form[action="/signup/entry"], form[action="/signin/entry"]{
+  width: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.signup-container, .signin-container{
+  max-width: 400px;
+}
+
+.signup-container h3, .signin-container h3{
   text-align: center;
+  margin-bottom: 20px;
+}
+
+body{
+  display: flex;
+  align-items: center;
+  height: 100vh;
 }

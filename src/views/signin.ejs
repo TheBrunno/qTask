@@ -1,15 +1,28 @@
 <%- include('includes/head') %>
-<link rel="stylesheet" href="css/sign.css">
+
+<link rel="stylesheet" href="css/signup.css">
 
 <div class="signin">
-  <h1>Entre</h1>
-  <form action="/signin/entry" method="post">
-    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-    <input type="text" name="email" placeholder="E-mail">
-    <input type="password" name="password" placeholder="Senha">
-    <button>Criar conta no qTask</button>
-
-  </form>
+  <%- include('includes/advices') %> 
+  <div class="signin-container">
+    <form action="/signin/entry" method="post">
+      <h3>Entre com suas informações nos campos abaixo:</h3>
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      <div class="group">
+        <input required="" type="text" class="input" name="email">
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label>E-mail*</label>
+      </div>
+      <div class="group">
+        <input required="" type="password" class="input" name="password">
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label>Senha*</label>
+      </div>
+      <button class="signin-button">Entrar no qTask</button>
+    </form>
+  </div>
 </div>
 
 <%- include('includes/footer') %> 
