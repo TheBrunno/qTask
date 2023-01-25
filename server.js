@@ -52,7 +52,7 @@ app.use(checkCSURFerror);
 app.use(csurfMiddleware);
 app.use(routes);
 
-const port = 3000;
+const port = process.env.PORT;
 app.on('ready', () => app.listen(port, () => {
   console.log(`http://localhost:${port}`);
 }))
