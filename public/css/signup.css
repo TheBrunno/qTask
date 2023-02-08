@@ -37,6 +37,7 @@ label {
   color: var(--second-color);
 }
 
+
 .bar {
   position: relative;
   display: block;
@@ -279,6 +280,14 @@ body {
   .signin-container form {
     width: 100vw !important;
   }
+
+  .signup-container,
+  .signin-container{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 @media (min-width: 755px) and (max-width: 1330px) {
@@ -295,4 +304,12 @@ body {
   .group .bar {
     width: calc(80vw + 15px);
   }
+}
+
+.error{
+  margin-top: -15px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #f00;
+  display: none;
 }

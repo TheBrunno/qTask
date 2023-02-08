@@ -10,7 +10,7 @@ exports.login = async (req, res) => {
 
   if(login.errors.length > 0){
     req.session.save(() => {
-      res.redirect('/sad');
+      res.redirect('back');
       return;
     })
     return;

@@ -13,20 +13,23 @@
       <h3>Entre com suas informações nos campos abaixo:</h3>
       <input type="hidden" name="_csrf" value="<%= csrfToken %>">
       <div class="group">
-        <input required="" type="text" class="input" name="email">
+        <input required="" type="email" class="input" name="email">
         <span class="highlight"></span>
         <span class="bar"></span>
         <label>E-mail*</label>
       </div>
+      <p class="error">Email ou senha inválido.</p>
       <div class="group">
         <input required="" type="password" class="input" name="password">
         <span class="highlight"></span>
         <span class="bar"></span>
         <label>Senha*</label>
       </div>
+      <p class="error">Email ou senha inválido.</p>
       <button class="signin-button">Entrar no qTask</button>
     </form>
   </div>
 </div>
-
+<script src="js/modules/Validate.js"></script>
+<script src="js/login.js"></script>
 <%- include('includes/footer') %> 
